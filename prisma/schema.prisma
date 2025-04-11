@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Certificate {
+  id           Int      @id @default(autoincrement())
+  fullName     String
+  email        String   // ← Add this line
+  serialNumber String
+  templateName String
+  url          String?
+  createdAt    DateTime @default(now())
+}
+
+model SerialCounter {
+  id        Int    @id @default(autoincrement())
+  prefix    String @unique
+  count     Int
+}
