@@ -9,10 +9,10 @@
     "lint": "next lint",
     "postinstall": "prisma generate",
     "vercel-build": "prisma generate && prisma migrate deploy && next build"
-
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
+    "@vercel/blob": "^1.0.0",
     "axios": "^1.8.4",
     "googleapis": "^148.0.0",
     "jszip": "^3.10.1",
