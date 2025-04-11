@@ -1,19 +1,23 @@
 -- CreateTable
 CREATE TABLE "Certificate" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" SERIAL NOT NULL,
     "fullName" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "serialNumber" TEXT NOT NULL,
     "templateName" TEXT NOT NULL,
     "url" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Certificate_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "SerialCounter" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" SERIAL NOT NULL,
     "prefix" TEXT NOT NULL,
-    "count" INTEGER NOT NULL
+    "count" INTEGER NOT NULL,
+
+    CONSTRAINT "SerialCounter_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
