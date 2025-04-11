@@ -205,8 +205,6 @@ async function processUser(user: ProcessRequest, selectedTemplates: string[]) {
       requestBody: { role: 'reader', type: 'anyone' },
     });
 
-    // Update database with folder URL
-    const folderUrl = `https://drive.google.com/drive/folders/${userFolderId}`;
     
     await prisma.serialCounter.update({
       where: { prefix: template.prefix },
