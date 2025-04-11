@@ -1,11 +1,12 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { listAllBlobs, deleteBlob, cleanupOldBlobs } from "@/lib/blob-utils"
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const blobs = await listAllBlobs()
     return NextResponse.json(blobs)
   } catch (error) {
+    console.error("Error listing blobs:", error)
     return NextResponse.json({ error: "Failed to list blobs" }, { status: 500 })
   }
 }
@@ -29,6 +30,7 @@ export async function DELETE(req: NextRequest) {
     const result = await deleteBlob(url)
     return NextResponse.json(result)
   } catch (error) {
+    console.error("Error deleting blob:", error)
     return NextResponse.json({ error: "Failed to delete blob" }, { status: 500 })
   }
 }
