@@ -1,11 +1,7 @@
 {
     "functions": {
       "api/route.ts": {
-        "maxDuration": 300 ,
-        "api": {
-            "bodyParser": false,
-            "externalResolver": true
-          }
+        "maxDuration": 300
         
       }
     }
