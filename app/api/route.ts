@@ -7,6 +7,8 @@ import { Readable } from 'stream';
 import QRCode from 'qrcode';
 import nodemailer from 'nodemailer';
 import { parse } from 'papaparse';
+export const maxDuration = 300; // 5 seconds
+export const dynamic = 'force-dynamic';
 
 const prisma = new PrismaClient();
 

@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
+    "@upstash/redis": "^1.34.7",
     "@vercel/blob": "^1.0.0",
     "axios": "^1.8.4",
+    "bullmq": "^5.48.1",
     "express-rate-limit": "^7.5.0",
     "googleapis": "^148.0.0",
     "jszip": "^3.10.1",
