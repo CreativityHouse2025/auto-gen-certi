@@ -1,8 +1,7 @@
 {
     "functions": {
-      "api/route.ts": {
-        "maxDuration": 300
-        
+      "pages/api/route.ts": {
+        "maxDuration": 300 
       }
     }
   }

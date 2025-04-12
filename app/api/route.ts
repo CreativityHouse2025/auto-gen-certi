@@ -366,3 +366,11 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+export const config = {
+  maxDuration: 300,
+  api: {
+    bodyParser: false,
+    externalResolver: true,
+  },
+};
