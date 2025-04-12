@@ -26,7 +26,7 @@ const transporter = nodemailer.createTransport({
 
 const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
-const drive = google.drive({ version: 'v3', auth: oauth2Client });
+const drive = google.drive({ version: 'v3', auth: oauth2Client, timeout:60000, });
 
 const bufferToStream = (buffer: Buffer) => {
   const stream = new Readable();
@@ -368,7 +368,7 @@ export async function POST(req: NextRequest) {
 }
 
 export const config = {
-  maxDuration: 300,
+  maxDuration: 60, // ⏱️ up to 60 seconds for Pro users
   api: {
     bodyParser: false,
     externalResolver: true,
