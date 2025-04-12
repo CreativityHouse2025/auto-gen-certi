@@ -1,34 +1,24 @@
-"use server"
-
-import { put } from "@vercel/blob"
+import { put } from "@vercel/blob";
+import { nanoid } from "nanoid";
 
 export async function uploadCsvToBlob(formData: FormData) {
   try {
-    const file = formData.get("csv") as File
+    const file = formData.get("csv") as File;
+    const uniqueSuffix = nanoid(); // Generate unique ID
+    
+    const { url } = await put(
+      `uploads/${file.name}-${uniqueSuffix}.csv`,
+      file,
+      {
+        access: "public",
+        contentType: file.type,
+        addRandomSuffix: true, // Additional safety
+      }
+    );
 
-    if (!file) {
-      return { success: false, error: "No file provided" }
-    }
-
-    // Generate a unique filename with timestamp
-    const timestamp = new Date().getTime()
-    const filename = `${timestamp}-${file.name}`
-
-    // Upload to Vercel Blob
-    const blob = await put(filename, file, {
-      access: "public",
-    })
-
-    return {
-      success: true,
-      url: blob.url,
-      filename: blob.pathname,
-    }
+    return { success: true, url };
   } catch (error) {
-    console.error("Error uploading to Blob:", error)
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : "Unknown error during upload",
-    }
+    console.error("Upload failed:", error);
+    return { success: false, error: "Upload failed" };
   }
 }
