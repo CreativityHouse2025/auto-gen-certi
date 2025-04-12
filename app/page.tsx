@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 const TEMPLATES = [
   { id: "template1", name: "PMPP Certificate", file: "/template1.png" },
@@ -99,9 +100,11 @@ export default function Home() {
                   onClick={() => handleTemplateToggle(template.id)}
                 >
                   <div className="aspect-w-1 aspect-h-1">
-                    <img
+                    <Image
                       src={template.file}
                       alt={template.name}
+                      width={100}
+                      height={100}
                       className="object-contain w-full h-full"
                     />
                   </div>

@@ -153,7 +153,7 @@ const processUser = async (user: ProcessRequest, selectedTemplates: string[]) =>
         color: customColor,
       });
 
-      let counter = await prisma.serialCounter.findUnique({
+      const counter = await prisma.serialCounter.findUnique({
         where: { prefix: template.prefix },
       }) || await prisma.serialCounter.create({
         data: { prefix: template.prefix, count: 1 },
@@ -199,13 +199,23 @@ const processUser = async (user: ProcessRequest, selectedTemplates: string[]) =>
           body: bufferToStream(Buffer.from(pdfBytes)),
         },
       });
-
+      const matchingFiles = (await drive.files.list({
+        q: `name='${pdfFileName}' and parents in '${userFolderId}'`,
+        fields: 'files(id)',
+      })).data.files;
+      
+      const fileId = matchingFiles && matchingFiles.length > 0 ? matchingFiles[0].id : null;
+      
+      if (!fileId) {
+        throw new Error(`Failed to find uploaded file ${pdfFileName} in folder ${userFolderId}`);
+      }
+      
       await drive.permissions.create({
-        fileId: (await drive.files.list({
-          q: `name='${pdfFileName}' and parents in '${userFolderId}'`,
-          fields: 'files(id)',
-        })).data.files?.[0]?.id!,
-        requestBody: { role: 'reader', type: 'anyone' },
+        fileId,
+        requestBody: {
+          role: 'reader',
+          type: 'anyone',
+        },
       });
 
       await prisma.serialCounter.update({
