@@ -7,6 +7,7 @@ import { Readable } from 'stream';
 import QRCode from 'qrcode';
 import nodemailer from 'nodemailer';
 import { parse } from 'papaparse';
+export const maxDuration = 800; // 5 seconds
 
 const prisma = new PrismaClient();
 
@@ -368,7 +369,6 @@ export async function POST(req: NextRequest) {
 }
 
 export const config = {
-  maxDuration: 800, // ⏱️ up to 60 seconds for Pro users
   api: {
     bodyParser: false,
     externalResolver: true,
