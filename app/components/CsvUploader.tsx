@@ -195,7 +195,13 @@ export default function Home() {
                       : "bg-red-100 text-red-800"
                   }`}
                 >
-                  {result.email} - {result.success ? "Success" : result.error}
+                 {result.success ? (
+            result.email ? `${result.email} - Success` : "Success"
+          ) : (
+            result.email && result.email !== "unknown"
+              ? `${result.email} - ${result.error}`
+              : `${result.error}`
+          )}
                 </div>
               ))}
             </div>
