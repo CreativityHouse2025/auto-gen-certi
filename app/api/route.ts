@@ -133,7 +133,7 @@ const processUser = async (user: ProcessRequest, selectedTemplates: string[]) =>
 
       const pdfDoc = await PDFDocument.create();
       const page = pdfDoc.addPage([842, 595]);
-      const pngImage = await pdfDoc.embedPng(Buffer.from(imageBuffer));
+      const pngImage = await pdfDoc.embedPng( Buffer.from(imageBuffer));
       
       page.drawImage(pngImage, {
         x: 0,
