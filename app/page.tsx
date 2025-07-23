@@ -8,7 +8,7 @@ const TEMPLATES = [
   { id: "template2", name: "PMP Certificate", file: "/template2.png" },
   { id: "template3", name: "SS Certificate", file: "/template3.png" },
   { id: "template4", name: "AI Certificate", file: "/template4.png" },
-  { id: "template5", name: "FS Certificate", file: "/template5.png" },
+  { id: "template5", name: "AG Certificate", file: "/template5.png" },
 ];
 type SuccessResult = {
   name: string;
