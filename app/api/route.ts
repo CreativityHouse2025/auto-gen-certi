@@ -55,27 +55,27 @@ interface CsvUser {
 
 const ALL_TEMPLATES = [
   { 
-    id: 'template1_v2',
+    id: 'template1',
     file: 'https://drive.google.com/uc?export=download&id=1cWW306zLpTgZgShiW4mlG3NVo1vX76Ws',
     prefix: 'PMPP B#' 
   },
   { 
-    id: 'template2_v2',
+    id: 'template2',
     file: 'https://drive.google.com/uc?export=download&id=1nKIzuwzGPXdFUp3kmR3I-_L6ZZff7hZd',
     prefix: 'PMP B#' 
   },
   { 
-    id: 'template3_v2',
+    id: 'template3',
     file: 'https://drive.google.com/uc?export=download&id=1fmkZNyLqnzTl0I23k4B5WPmUw5Zvz4gY',
     prefix: 'SS B#' 
   },
   { 
-    id: 'template4_v2',
+    id: 'template4',
     file: 'https://drive.google.com/uc?export=download&id=1fmkZNyLqnzTl0I23k4B5WPmUw5Zvz4gY',
     prefix: 'AI B#' 
   },
   { 
-    id: 'template5_v2',
+    id: 'template5',
     file: 'https://drive.google.com/uc?export=download&id=1jFZkif5MktQjS0iYylqRKDLjWiR6Kpmh',
     prefix: 'AG B#' 
   },
