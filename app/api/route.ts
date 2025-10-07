@@ -143,7 +143,7 @@ const processUser = async (user: ProcessRequest, selectedTemplates: string[]) =>
       });
 
       const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
-      const fontSize = 36;
+      const fontSize = 32;
       const textWidth = font.widthOfTextAtSize(user.fullName, fontSize);
       
       page.drawText(user.fullName, {
